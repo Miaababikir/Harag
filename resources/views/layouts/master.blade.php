@@ -27,7 +27,7 @@
     <!-- Main Layout -->
         <main class="cd-main-content">
 
-        @include('includes.header')
+        @yield('header')
 
         <!-- Content -->
             <div id="content">
