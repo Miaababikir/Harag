@@ -1,5 +1,11 @@
 @extends('layouts.master')
 
+@section('header')
+
+    @include('includes.header')
+
+@endsection
+
 @section('content')
     <!-- Quick View -->
     <div id="qck-view-shop" class="zoom-anim-dialog qck-inside mfp-hide">
