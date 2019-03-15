@@ -28,4 +28,3 @@ Route::view('/control-panel/categories', 'controlPanel.categories.index');
 Route::view('/control-panel/cities', 'controlPanel.cities.index');
 Route::view('/control-panel/tags', 'controlPanel.tags.index');
 Route::view('/control-panel/users', 'controlPanel.users.index');
-
