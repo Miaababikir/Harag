@@ -2,7 +2,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="" class="brand-link">
-        <span class="brand-text font-weight-light">AdminLTE 3</span>
+        <span class="brand-text font-weight-light">Harag</span>
     </a>
 
     <!-- Sidebar -->
@@ -27,24 +27,46 @@
                         <i class="nav-icon fa fa-dashboard"></i>
                         <p>
                             Dashboard
-                            <i class="right fa fa-angle-left"></i>
                         </p>
                     </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="" class="nav-link">
-                                <i class="fa fa-circle-o nav-icon"></i>
-                                <p>Dashboard v1</p>
-                            </a>
-                        </li>
-                    </ul>
                 </li>
                 <li class="nav-item">
                     <a href="" class="nav-link">
-                        <i class="nav-icon fa fa-th"></i>
+                        <i class="nav-icon fa fa-user-secret"></i>
                         <p>
-                            Widgets
-                            <span class="right badge badge-danger">New</span>
+                            Admins
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="" class="nav-link">
+                        <i class="nav-icon fa fa-users"></i>
+                        <p>
+                            Users
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="" class="nav-link">
+                        <i class="nav-icon fa fa-list"></i>
+                        <p>
+                            Categories
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="" class="nav-link">
+                        <i class="nav-icon fa fa-tags"></i>
+                        <p>
+                            Tags
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="" class="nav-link">
+                        <i class="nav-icon fa fa-map"></i>
+                        <p>
+                            Cities
                         </p>
                     </a>
                 </li>

@@ -11,10 +11,21 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::view('/', 'home')->name('home');
+
+Route::view('/advertises/detail', 'advertises.show');
+
+
+
+
+Route::view('/control-panel', 'controlPanel.index');
+Route::view('/control-panel/admins', 'controlPanel.admins.index');
+Route::view('/control-panel/categories', 'controlPanel.categories.index');
+Route::view('/control-panel/cities', 'controlPanel.cities.index');
+Route::view('/control-panel/tags', 'controlPanel.tags.index');
+Route::view('/control-panel/users', 'controlPanel.users.index');
+
