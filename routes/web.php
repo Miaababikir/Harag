@@ -21,6 +21,11 @@ Route::view('/advertises/detail', 'advertises.show');
 Route::view('/advertises', 'advertises.index');
 
 
+Route::view('/user-panel', 'user-panel.index');
+Route::view('/user-panel/profile', 'user-panel.profile.edit');
+Route::view('/user-panel/advertises', 'user-panel.advertises.index');
+Route::view('/user-panel/advertises/create', 'user-panel.advertises.create');
+Route::view('/user-panel/advertises/edit', 'user-panel.advertises.edit');
 
 
 Route::view('/control-panel', 'controlPanel.index');
