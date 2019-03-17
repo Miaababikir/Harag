@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-
+<!--======= SUB BANNER =========-->
 <section class="sub-bnr">
     <div class="position-center-center">
         <div class="container">
@@ -13,7 +13,7 @@
         </div>
     </div>
 </section>
-
+<!-- Content -->
 <div id="content">
 
     <!-- Popular Products -->

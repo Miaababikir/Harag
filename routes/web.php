@@ -18,6 +18,7 @@ Auth::routes();
 Route::view('/', 'home')->name('home');
 
 Route::view('/advertises/detail', 'advertises.show');
+Route::view('/advertises', 'advertises.index');
 
 
 
