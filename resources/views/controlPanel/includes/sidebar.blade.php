@@ -70,6 +70,20 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.logout') }}" class="nav-link"
+                       onclick="event.preventDefault();
+                       document.getElementById('admin-logout-form').submit();"
+                    >
+                        <i class="nav-icon fa fa-lock"></i>
+                        <p>
+                            {{ __('Logout') }}
+                        </p>
+                    </a>
+                    <form id="admin-logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

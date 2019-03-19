@@ -37,9 +37,9 @@
     </div>
     <!-- ./wrapper -->
 
-
-    @include('controlPanel.includes.scripts')
 </div>
+
+@include('controlPanel.includes.scripts')
 
 </body>
 </html>
