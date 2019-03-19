@@ -31,9 +31,21 @@ Route::view('/user-panel/advertises/create', 'user-panel.advertises.create');
 Route::view('/user-panel/advertises/edit', 'user-panel.advertises.edit');
 
 
-Route::view('/control-panel', 'controlPanel.index');
-Route::view('/control-panel/admins', 'controlPanel.admins.index');
-Route::view('/control-panel/categories', 'controlPanel.categories.index');
-Route::view('/control-panel/cities', 'controlPanel.cities.index');
-Route::view('/control-panel/tags', 'controlPanel.tags.index');
-Route::view('/control-panel/users', 'controlPanel.users.index');
+
+
+Route::get('/control-panel/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
+Route::post('/control-panel/login', 'Auth\AdminLoginController@login')->name('admin.login');
+Route::post('/control-panel/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
+
+Route::prefix('control-panel')->middleware('auth:admin')->group(function () {
+
+    Route::view('', 'controlPanel.index')->name('admin.home');
+    Route::view('admins', 'controlPanel.admins.index');
+    Route::view('categories', 'controlPanel.categories.index');
+    Route::view('cities', 'controlPanel.cities.index');
+    Route::view('tags', 'controlPanel.tags.index');
+    Route::view('users', 'controlPanel.users.index');
+
+});
+
+
