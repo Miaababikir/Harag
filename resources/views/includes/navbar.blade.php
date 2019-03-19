@@ -165,7 +165,7 @@
             <div class="nav-right">
                 <ul class="navbar-right">
                     <!-- USER INFO -->
-                    <li> <a href="login.html"><i class="lnr lnr-user"></i> </a></li>
+                    <li> <a href="{{route('login')}}"><i class="lnr lnr-user"></i> </a></li>
                     <!-- USER BASKET -->
                     <li> <a id="cd-menu-trigger" href="#0"><i class="lnr lnr-cart"></i><span class="c-no">2</span> </a> </li>
                     <!-- SEARCH BAR -->

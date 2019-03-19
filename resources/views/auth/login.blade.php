@@ -1,73 +1,108 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
+<section class="chart-page login gray-bg padding-top-100 padding-bottom-100">
+    <div class="container">
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+        <!-- Payments Steps -->
+        <div class="shopping-cart">
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
+            <!-- SHOPPING INFORMATION -->
+            <div class="cart-ship-info">
+                <div class="row">
 
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+                    <!-- Login Register -->
+                    <div class="col-sm-7 center-block">
 
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                        <!-- Nav Tabs -->
+                        <ul class="nav">
+                            <li class="nav-item">
+                                <a class="nav-link active">Login</a>
+                            </li>
+                        </ul>
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+                        <!-- Login Register Inside -->
+                        <div class="tab-content" id="myTabContent">
 
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+                            <!-- Login -->
+                            <div class="tab-pane fade show active" id="log" role="tabpanel" aria-labelledby="login-tab">
+                                <form method="POST" action="{{ route('login') }}">
+                                    @csrf
+                                    <ul class="row">
 
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                        <!-- Email -->
+                                        <li class="col-md-12">
+                                            <label>Email Address
+                                                <input type="text" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
+                                                    name="email" value="{{ old('email') }}" required autofocus>
+                                                @if ($errors->has('email'))
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $errors->first('email') }}</strong>
+                                                </span>
+                                                @endif
+                                            </label>
+                                        </li>
+                                        <!-- Password -->
+                                        <li class="col-md-12">
+                                            <label>Password
+                                                <input type="password" name="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
+                                                    required>
 
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
+                                                @if ($errors->has('password'))
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $errors->first('password') }}</strong>
+                                                </span>
+                                                @endif
+                                            </label>
+                                        </li>
+
+                                        <!-- LOGIN -->
+                                        <li class="col-md-6">
+                                            <button type="submit" class="btn">LOGIN</button>
+                                        </li>
+
+                                        <!-- FORGET PASS -->
+                                        <li class="col-md-6">
+                                            <div class="margin-top-15 text-right"> <a href="{{route('register')}}">Register</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </form>
+
+                                <!-- Main Heading -->
+                                <div class="heading text-center margin-bottom-50 margin-top-50">
+                                    <h4>LOGIN WITH SOCIAL MEDIA</h4>
+                                    <hr>
                                 </div>
+                                <ul class="login-with">
+                                    <li> <a href="#."><i class="fa fa-facebook"></i>FACEBOOK</a> </li>
+                                    <li> <a href="#."><i class="fa fa-google"></i>GOOGLE</a> </li>
+                                    <li> <a href="#."><i class="fa fa-twitter"></i>TWITTER</a> </li>
+                                </ul>
+                            </div>
+
                             </div>
                         </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</section>
+
+@endsection
+@section('scripts')
+<script>
+    const app = new Vue({
+        el: '#app',
+        data: {
+            search: '',
+        },
+        methods: {
+
+        },
+    });
+
+</script>
 @endsection

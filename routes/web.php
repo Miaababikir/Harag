@@ -15,7 +15,10 @@
 
 Auth::routes();
 
-Route::view('/', 'home')->name('home');
+//after Auth routes
+Auth::routes(['verify' => true]);
+
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::view('/advertises/detail', 'advertises.show');
 Route::view('/advertises', 'advertises.index');
