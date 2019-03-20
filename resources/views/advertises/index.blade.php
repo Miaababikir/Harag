@@ -102,7 +102,7 @@
                                         <!-- Item Name -->
                                         <div class="item-name fr-grd">
                                             <a href="#." class="i-tittle">Mid Rise Skinny Jeans</a>
-                                                <a class="deta animated fadeInRight" href="#.">View Detail</a>
+                                                <a class="deta animated fadeInRight" href="advertises/detail">View Detail</a>
                                             </div>
                                         <!-- Item Details -->
                                         <div class="cap-text">
