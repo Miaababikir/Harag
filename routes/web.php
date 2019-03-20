@@ -23,15 +23,11 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::view('/advertises/detail', 'advertises.show');
 Route::view('/advertises', 'advertises.index');
 
-
 Route::view('/user-panel', 'user-panel.index');
 Route::view('/user-panel/profile', 'user-panel.profile.edit');
 Route::view('/user-panel/advertises', 'user-panel.advertises.index');
 Route::view('/user-panel/advertises/create', 'user-panel.advertises.create');
 Route::view('/user-panel/advertises/edit', 'user-panel.advertises.edit');
-
-
-
 
 Route::get('/control-panel/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
 Route::post('/control-panel/login', 'Auth\AdminLoginController@login')->name('admin.login');
