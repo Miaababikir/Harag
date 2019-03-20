@@ -15,6 +15,10 @@
 
 Auth::routes();
 
+Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider')->name('login.social');
+Route::get('login/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
+
+
 //after Auth routes
 Auth::routes(['verify' => true]);
 
