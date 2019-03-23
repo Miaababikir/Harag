@@ -57,12 +57,12 @@
                                 <th>Name</th>
                                 <th></th>
                             </tr>
-                            <tr>
-                                <td>183</td>
-                                <td>Sports</td>
+                            <tr v-for="tag in tags">
+                                <td>@{{ tag.id }}</td>
+                                <td>@{{ tag.name }}</td>
                                 <td>
                                     <button type="button" class="btn btn-primary" data-toggle="modal"
-                                            data-target="#edit"><i class="fa fa-edit"></i> Edit
+                                            data-target="#edit" @click="editTag(tag.id)"><i class="fa fa-edit"></i> Edit
                                     </button>
                                     <button type="button" class="btn btn-danger" data-toggle="modal"
                                             data-target="#delete"><i class="fa fa-trash"></i> Delete
@@ -90,13 +90,13 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form class="form-horizontal">
+                <form class="form-horizontal" @submit.prevent="addTag">
                     <div class="modal-body">
                         <div class="form-group">
                             <label class="col-2 control-label">Tag</label>
 
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" placeholder="Tag name">
+                                <input type="text" class="form-control" placeholder="Tag name" required v-model="name">
                             </div>
                         </div>
 
@@ -121,13 +121,13 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form class="form-horizontal">
+                <form class="form-horizontal" @submit.prevent="updateTag">
                     <div class="modal-body">
                         <div class="form-group">
                             <label class="col-2 control-label">Tag</label>
 
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" placeholder="Category name">
+                                <input type="text" class="form-control" placeholder="Category name" v-model="name">
                             </div>
                         </div>
 
@@ -141,7 +141,8 @@
         </div>
     </div>
 
-    <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -160,5 +161,73 @@
             </div>
         </div>
     </div>
+
+@endsection
+
+@section('scripts')
+
+    <script>
+
+        new Vue({
+            el: '#app',
+
+            data: {
+                tags: {!! $tags !!},
+                id: '',
+                name: ''
+            },
+
+            methods: {
+                getTags() {
+                    axios.get('/control-panel/tags').then(response => this.tags = response.data);
+                },
+
+                addTag() {
+                    axios.post('/control-panel/tags', {
+                        name: this.name
+                    })
+                        .then(response => {
+                            window.Alert.success('Category Added!');
+                            this.tags.push(response.data);
+                            $('#add').modal('hide');
+                            this.clearForm();
+                        })
+                        .catch(error => {
+                            window.Alert.error('Oops! Something went wrong!');
+                        });
+                },
+
+                editTag(id) {
+                    let tag = this.findTag(id);
+                    this.name = tag.name;
+                    this.id = tag.id;
+                },
+
+                updateTag() {
+                    axios.put(`/control-panel/tags/${this.id}`, {
+                        name: this.name
+                    })
+                        .then(response => {
+                            this.getTags();
+                            $('#edit').modal('hide');
+                            window.Alert.success('Tag Updated!');
+                            this.clearForm();
+                        })
+                        .catch(error => {
+                            window.Alert.error('Oops! Something went wrong!')
+                        });
+                },
+
+                findTag(id) {
+                    return this.tags.find((tag) => tag.id === id);
+                },
+
+                clearForm() {
+                    this.name = "";
+                }
+            }
+        });
+
+    </script>
 
 @endsection

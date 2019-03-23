@@ -1,6 +1,8 @@
 <?php
 
 use App\Admin;
+use App\Category;
+use App\Tag;
 use App\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -32,9 +34,27 @@ $factory->define(User::class, function (Faker $faker) {
     ];
 });
 
+
+
+
+
+
 $factory->define(Admin::class, function (Faker $faker) {
     return [
         'username' => $faker->name,
         'password' => Hash::make('123456'),
+    ];
+});
+
+$factory->define(Category::class, function (Faker $faker) {
+    return [
+        'name' => $faker->word,
+        'icon' => 'fa fa-apple',
+    ];
+});
+
+$factory->define(Tag::class, function (Faker $faker) {
+    return [
+        'name' => $faker->word,
     ];
 });
