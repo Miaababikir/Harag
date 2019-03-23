@@ -22,10 +22,12 @@ Route::get('login/{provider}/callback', 'Auth\LoginController@handleProviderCall
 //after Auth routes
 Auth::routes(['verify' => true]);
 
-Route::get('/', 'HomeController@ind`ex')->name('home');
-
-Route::view('/advertises/detail', 'advertises.show');
-Route::view('/advertises', 'advertises.index');
+//Home
+Route::get('/', 'HomeController@index')->name('home');
+//Contact
+Route::get('/contact', 'HomeController@contact')->name('contact');
+//Advertises
+Route::resource('advertises', 'Advertises\AdvertiseController');
 
 Route::view('/user-panel', 'user-panel.index');
 Route::view('/user-panel/profile', 'user-panel.profile.edit');

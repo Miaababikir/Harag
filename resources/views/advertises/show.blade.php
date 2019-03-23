@@ -7,8 +7,9 @@
         <div class="container">
             <h4>Rise Skinny Jeans</h4>
             <ol class="breadcrumb">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Advertise</a></li>
+                <li><a href="{{route('home')}}">Home</a></li>
+                <li><a href="{{route('advertises.index')}}">Advertise</a></li>
+                <li class="active">Detail</li>
             </ol>
         </div>
     </div>
@@ -97,7 +98,7 @@
 
                                 <!-- LIKE -->
                                 <li class="col-sm-6">
-                                        <a href="#." class="like-us"><i class="fa fa-thumbs-up"></i>Recommend</a>
+                                        <a href="#." class="like-us"><i class="icon-heart padding-right-5"></i>0</a>
                                     </li>
 
                                     <li> <i class="icon-call-end"></i> 1.800.123.456789</li>
@@ -169,6 +170,7 @@
                             </div>
                         </div>
 
+                        @auth
                         <!-- ADD REVIEW -->
                         <h6 class="margin-t-40">ADD Comment</h6>
                         <form>
@@ -186,6 +188,7 @@
                                 </li>
                             </ul>
                         </form>
+                        @endauth
                     </div>
 
                     <!-- TAGS -->
