@@ -7,9 +7,8 @@
         <div class="container">
             <h4>Bo Shop with Sidebar </h4>
             <ol class="breadcrumb">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Pages</a></li>
-                <li class="active">Items</li>
+                <li><a href="{{route('home')}}">Home</a></li>
+                <li class="active">Advertises</li>
             </ol>
         </div>
     </div>
@@ -31,29 +30,13 @@
                         <ul class="shop-cate">
                             <li><a href="#."> Chair <span>24</span></a></li>
                             <li><a href="#."> Bag <span>122</span></a></li>
-                            <li><a href="#."> Soffa <span>09</span></a></li>
-                            <li><a href="#."> Bed <span>12</span></a></li>
-                            <li><a href="#."> Shoes <span>98</span></a></li>
-                            <li><a href="#."> Table <span>34</span></a></li>
-                            <li><a href="#."> Bedsheets <span>23</span></a></li>
-                            <li><a href="#."> Curtains <span>43</span></a></li>
-                            <li><a href="#."> TV Cabinets <span>12</span></a></li>
-                            <li><a href="#."> Clocks <span>18</span></a></li>
-                            <li><a href="#."> Towels <span>25</span></a></li>
                         </ul>
 
                         <!-- TAGS -->
-                        <h5 class="shop-tittle margin-top-60 margin-bottom-30">Papular Tags</h5>
+                        <h5 class="shop-tittle margin-top-60 margin-bottom-30">Tags</h5>
                         <ul class="shop-tags">
                             <li><span class="badge badge-warning"><a href="#.">Towels</a></span></li>
                             <li><span class="badge badge-warning"><a href="#.">Chair</a></span></li>
-                            <li><span class="badge badge-warning"><a href="#.">Bedsheets</a></span></li>
-                            <li><span class="badge badge-warning"><a href="#.">Shoe</a></span></li>
-                            <li><span class="badge badge-warning"><a href="#.">Curtains</a></span></li>
-                            <li><span class="badge badge-warning"><a href="#.">Clocks</a></span></li>
-                            <li><span class="badge badge-warning"><a href="#.">TV Cabinets</a></span></li>
-                            <li><span class="badge badge-warning"><a href="#.">Best Seller</a></span></li>
-                            <li><span class="badge badge-warning"><a href="#.">Top Selling</a></span></li>
                         </ul>
 
                     </div>
@@ -102,7 +85,7 @@
                                         <!-- Item Name -->
                                         <div class="item-name fr-grd">
                                             <a href="#." class="i-tittle">Mid Rise Skinny Jeans</a>
-                                                <a class="deta animated fadeInRight" href="advertises/detail">View Detail</a>
+                                                <a class="deta animated fadeInRight" href="{{route('advertises.show', $test)}}">View Detail</a>
                                             </div>
                                         <!-- Item Details -->
                                         <div class="cap-text">
@@ -172,9 +155,11 @@
 
                                         <!-- Btn  -->
                                         <div class="add-info">
-                                            <a href="#." class="btn"><i class="fa fa-thumbs-up"></i></a>
-                                            <a href="#." class="btn"><i class="fa fa-envelope fa-lg"></i></a>
-                                            <i class="icon-call-end">1.800.123.456789</i>
+                                            <a href="#." class="like-us margin-right-50">
+                                                <i class="icon-heart padding-right-10"></i>0
+                                            </a>
+                                            <i class="icon-call-end margin-right-50">1.800.123.456789</i>
+                                           <a href="#." class="btn"><i class="fa fa-envelope fa-lg"></i></a>
                                         </div>
                                     </div>
                                 </div>
