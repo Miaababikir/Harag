@@ -188,7 +188,7 @@
 
 @section('scripts')
     <script>
-        const app = new Vue({
+        new Vue({
             el: '#app',
             data: {
                 categories: {!! $categories !!},
@@ -201,7 +201,7 @@
                 getCategories() {
                     axios.get('/control-panel/categories')
                         .then(response => {
-                           this.categories = response.data;
+                            this.categories = response.data;
                         });
                 },
 

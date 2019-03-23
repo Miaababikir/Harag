@@ -39,8 +39,6 @@ class CategoryController extends Controller
 
         $category = Category::create($request->only(['name', 'icon']));
 
-        session()->flash('success', 'Added successfully');
-
         return $category;
 
     }
