@@ -22,7 +22,7 @@ Route::get('login/{provider}/callback', 'Auth\LoginController@handleProviderCall
 //after Auth routes
 Auth::routes(['verify' => true]);
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@ind`ex')->name('home');
 
 Route::view('/advertises/detail', 'advertises.show');
 Route::view('/advertises', 'advertises.index');
@@ -39,9 +39,11 @@ Route::post('/control-panel/logout', 'Auth\AdminLoginController@logout')->name('
 
 Route::prefix('control-panel')->middleware('auth:admin')->group(function () {
 
+    Route::resource('categories', 'ControlPanel\Categories\CategoryController')->except(['create', 'edit', 'show']);
+
+
     Route::view('', 'controlPanel.index')->name('admin.home');
     Route::view('admins', 'controlPanel.admins.index');
-    Route::view('categories', 'controlPanel.categories.index');
     Route::view('cities', 'controlPanel.cities.index');
     Route::view('tags', 'controlPanel.tags.index');
     Route::view('users', 'controlPanel.users.index');

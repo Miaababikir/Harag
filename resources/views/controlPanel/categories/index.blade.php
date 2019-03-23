@@ -55,14 +55,17 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Name</th>
+                                <th>Icon</th>
                                 <th></th>
                             </tr>
-                            <tr>
-                                <td>183</td>
-                                <td>Sports</td>
+                            <tr v-for="category in categories">
+                                <td>@{{ category.id }}</td>
+                                <td>@{{ category.name }}</td>
+                                <td>@{{ category.icon }}</td>
                                 <td>
                                     <button type="button" class="btn btn-primary" data-toggle="modal"
-                                            data-target="#edit"><i class="fa fa-edit"></i> Edit
+                                            data-target="#edit" @click="editCategory(category.id)"><i
+                                            class="fa fa-edit"></i> Edit
                                     </button>
                                     <button type="button" class="btn btn-danger" data-toggle="modal"
                                             data-target="#delete"><i class="fa fa-trash"></i> Delete
@@ -90,13 +93,23 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form class="form-horizontal">
+                <form class="form-horizontal" @submit.prevent="addCategory">
                     <div class="modal-body">
                         <div class="form-group">
                             <label class="col-2 control-label">Category</label>
 
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" placeholder="Category name">
+                                <input type="text" class="form-control" placeholder="Category name" v-model="name"
+                                       required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-2 control-label">Icon</label>
+
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" placeholder="Paste your icon name here"
+                                       v-model="icon" required>
                             </div>
                         </div>
 
@@ -121,27 +134,37 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form class="form-horizontal">
+                <form class="form-horizontal" @submit.prevent="updateCategory">
                     <div class="modal-body">
                         <div class="form-group">
                             <label class="col-2 control-label">Category</label>
 
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" placeholder="Category name">
+                                <input type="text" class="form-control" placeholder="Category name" v-model="name">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-2 control-label">Category icon</label>
+
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" placeholder="Paste your icon name here"
+                                       v-model="icon">
                             </div>
                         </div>
 
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-info">Save</button>
+                        <button class="btn btn-info">Save</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 
-    <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -161,4 +184,78 @@
         </div>
     </div>
 
+@endsection
+
+@section('scripts')
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                categories: {!! $categories !!},
+                id: '',
+                name: '',
+                icon: ''
+            },
+            methods: {
+
+                getCategories() {
+                    axios.get('/control-panel/categories')
+                        .then(response => {
+                           this.categories = response.data;
+                        });
+                },
+
+                addCategory() {
+                    axios.post('/control-panel/categories', {
+                        name: this.name,
+                        icon: this.icon
+                    })
+                        .then(response => {
+                            window.Alert.success('Category Added!');
+                            this.categories.push(response.data);
+                            $('#add').modal('hide');
+                            this.clearForm();
+                        })
+                        .catch(error => {
+                            window.Alert.error('Oops! Something went wrong!');
+                        });
+                },
+
+                editCategory(id) {
+                    let category = this.findCategory(id);
+
+                    this.name = category.name;
+                    this.icon = category.icon;
+                    this.id = category.id;
+                },
+
+                updateCategory() {
+                    axios.put(`/control-panel/categories/${this.id}`, {
+                        name: this.name,
+                        icon: this.icon
+                    })
+                        .then(response => {
+                            this.getCategories();
+                            $('#edit').modal('hide');
+                            window.Alert.success('Category Updated!');
+                            this.clearForm();
+                        })
+                        .catch(error => {
+                            console.log(error);
+                            window.Alert.error('Oops! Something went wrong!')
+                        });
+                },
+
+                findCategory(id) {
+                    return this.categories.find((category) => category.id === id);
+                },
+
+                clearForm() {
+                    this.name = "";
+                    this.icon = "";
+                }
+            },
+        });
+
+    </script>
 @endsection
