@@ -187,7 +187,7 @@
                         name: this.name
                     })
                         .then(response => {
-                            window.Alert.success('Category Added!');
+                            window.Alert.success('Tag Added!');
                             this.tags.push(response.data);
                             $('#add').modal('hide');
                             this.clearForm();

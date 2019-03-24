@@ -57,12 +57,12 @@
                                 <th>Name</th>
                                 <th></th>
                             </tr>
-                            <tr>
-                                <td>183</td>
-                                <td>Khartoum</td>
+                            <tr v-for="city in cities">
+                                <td>@{{ city.id }}</td>
+                                <td>@{{ city.name }}</td>
                                 <td>
                                     <button type="button" class="btn btn-primary" data-toggle="modal"
-                                            data-target="#edit"><i class="fa fa-edit"></i> Edit
+                                            data-target="#edit" @click="editCity(city.id)"><i class="fa fa-edit"></i> Edit
                                     </button>
                                     <button type="button" class="btn btn-danger" data-toggle="modal"
                                             data-target="#delete"><i class="fa fa-trash"></i> Delete
@@ -90,13 +90,13 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form class="form-horizontal">
+                <form class="form-horizontal" @submit.prevent="addCity">
                     <div class="modal-body">
                         <div class="form-group">
                             <label class="col-2 control-label">City</label>
 
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" placeholder="City name">
+                                <input type="text" class="form-control" placeholder="City name" v-model="name">
                             </div>
                         </div>
 
@@ -121,13 +121,13 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form class="form-horizontal">
+                <form class="form-horizontal" @submit.prevent="updateCity">
                     <div class="modal-body">
                         <div class="form-group">
                             <label class="col-2 control-label">City</label>
 
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" placeholder="City name">
+                                <input type="text" class="form-control" placeholder="City name" v-model="name">
                             </div>
                         </div>
 
@@ -141,7 +141,8 @@
         </div>
     </div>
 
-    <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -160,5 +161,74 @@
             </div>
         </div>
     </div>
+
+@endsection
+
+
+@section('scripts')
+
+    <script>
+
+        new Vue({
+            el: '#app',
+
+            data: {
+                cities: {!! $cities !!},
+                id: '',
+                name: ''
+            },
+
+            methods: {
+                getCities() {
+                    axios.get('/control-panel/cities').then(response => this.cities = response.data);
+                },
+
+                addCity() {
+                    axios.post('/control-panel/cities', {
+                        name: this.name
+                    })
+                        .then(response => {
+                            window.Alert.success('City Added!');
+                            this.cities.push(response.data);
+                            $('#add').modal('hide');
+                            this.clearForm();
+                        })
+                        .catch(error => {
+                            window.Alert.error('Oops! Something went wrong!');
+                        });
+                },
+
+                editCity(id) {
+                    let city = this.findCity(id);
+                    this.id = city.id;
+                    this.name = city.name;
+                },
+
+                updateCity() {
+                    axios.put(`/control-panel/cities/${this.id}`, {
+                        name: this.name
+                    })
+                        .then(response => {
+                            this.getCities();
+                            $('#edit').modal('hide');
+                            window.Alert.success('City Updated!');
+                            this.clearForm();
+                        })
+                        .catch(error => {
+                            window.Alert.error('Oops! Something went wrong!')
+                        });
+                },
+
+                findCity(id) {
+                    return this.cities.find((city) => city.id === id);
+                },
+
+                clearForm() {
+                    this.name = "";
+                }
+            }
+        });
+
+    </script>
 
 @endsection
