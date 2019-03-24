@@ -2,6 +2,7 @@
 
 use App\Admin;
 use App\Category;
+use App\City;
 use App\Tag;
 use App\User;
 use Illuminate\Support\Facades\Hash;
@@ -56,5 +57,11 @@ $factory->define(Category::class, function (Faker $faker) {
 $factory->define(Tag::class, function (Faker $faker) {
     return [
         'name' => $faker->word,
+    ];
+});
+
+$factory->define(City::class, function (Faker $faker) {
+    return [
+        'name' => $faker->city,
     ];
 });
