@@ -31581,10 +31581,6 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-var app = new Vue({
-  el: '#app'
-});
-
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -31730,9 +31726,9 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/miaababikir/Projects/Laravel/Harag/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /home/miaababikir/Projects/Laravel/Harag/resources/sass/app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! /home/miaababikir/Projects/Laravel/Harag/resources/sass/controlPanel.scss */"./resources/sass/controlPanel.scss");
+__webpack_require__(/*! D:\Projects\Harag\resources\js\app.js */"./resources/js/app.js");
+__webpack_require__(/*! D:\Projects\Harag\resources\sass\app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! D:\Projects\Harag\resources\sass\controlPanel.scss */"./resources/sass/controlPanel.scss");
 
 
 /***/ })
