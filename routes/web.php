@@ -42,12 +42,12 @@ Route::post('/control-panel/logout', 'Auth\AdminLoginController@logout')->name('
 Route::prefix('control-panel')->middleware('auth:admin')->group(function () {
 
     Route::resource('categories', 'ControlPanel\Categories\CategoryController')->except(['create', 'edit', 'show']);
+    Route::resource('cities', 'ControlPanel\Cities\CityController')->except(['create', 'edit', 'show']);
     Route::resource('tags', 'ControlPanel\Tags\TagController')->except(['create', 'edit', 'show']);
 
 
     Route::view('', 'controlPanel.index')->name('admin.home');
     Route::view('admins', 'controlPanel.admins.index');
-    Route::view('cities', 'controlPanel.cities.index');
     Route::view('users', 'controlPanel.users.index');
 
 });

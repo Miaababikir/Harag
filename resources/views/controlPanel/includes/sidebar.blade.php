@@ -47,7 +47,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="{{ route('categories.index') }}" class="nav-link">
                         <i class="nav-icon fa fa-list"></i>
                         <p>
                             Categories
@@ -55,7 +55,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="{{ route('tags.index') }}" class="nav-link">
                         <i class="nav-icon fa fa-tags"></i>
                         <p>
                             Tags
@@ -63,7 +63,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="{{ route('cities.index') }}" class="nav-link">
                         <i class="nav-icon fa fa-map"></i>
                         <p>
                             Cities
