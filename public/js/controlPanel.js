@@ -48954,7 +48954,7 @@ function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/miaababikir/Projects/Laravel/Harag/resources/js/controlPanel.js */"./resources/js/controlPanel.js");
+module.exports = __webpack_require__(/*! D:\Projects\Harag\resources\js\controlPanel.js */"./resources/js/controlPanel.js");
 
 
 /***/ })

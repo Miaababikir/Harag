@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Advertises;
 
 use App\Advertise;
+use App\Tag;
+use App\City;
+use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -15,8 +18,11 @@ class AdvertiseController extends Controller
      */
     public function index()
     {
-        $test = '1';
-        return view('advertises.index')->withTest($test);
+        $tags = Tag::all();
+        $categories = Category::all();
+        $cities = City::all();
+
+        return view('advertises.index')->withTags($tags)->withCategories($categories)->withCities($cities);
     }
 
     /**
